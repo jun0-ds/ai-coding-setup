@@ -2,6 +2,8 @@
 
 AI 코딩 어시스턴트 세팅 가이드 모음. VS Code 기준.
 
+> `auto-setup.md`에는 jun's 비법소스가 들어있습니다. 붙여넣기 한 방이면 AI가 알아서 세팅합니다.
+
 ## Claude Code (Anthropic)
 
 유료 (API 종량제 또는 Max 구독)
