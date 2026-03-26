@@ -1,6 +1,17 @@
 # Gemini 자동 세팅 요청
 
-아래 작업을 순서대로 실행해줘. 각 단계 완료 후 결과를 알려줘.
+이 세팅을 시작하기 전에, 아래 질문을 먼저 해줘.
+답변을 받은 뒤 해당하는 단계만 실행할 것.
+
+## 사전 질문
+
+1. **Python 프로젝트를 할 예정인가요?** (Yes/No)
+   - Yes → 4단계(Python 도구 설치) 실행
+   - No → 4단계 스킵
+
+---
+
+질문 답변을 받았으면 아래 작업을 순서대로 실행해줘.
 OS를 먼저 확인하고, Windows면 PowerShell 명령어를, Mac/Linux면 bash 명령어를 사용해.
 
 > **기존 Gemini 세팅이 있어도 OK.** 기존 설정 파일은 `.bak`으로 백업 후 새 설정으로 교체함.
@@ -14,38 +25,9 @@ OS를 먼저 확인하고, Windows면 PowerShell 명령어를, Mac/Linux면 bash
 
 존재하지 않는 파일은 스킵.
 
-## 2. 환경 확인
+## 2. 글로벌 설정 디렉토리 및 파일 생성
 
-```bash
-node --version
-npm --version
-```
-
-Node.js 20 미만이면 https://nodejs.org 에서 설치하라고 안내해줘.
-
-## 3. Gemini CLI 설치 확인
-
-```bash
-gemini --version
-```
-
-설치 안 되어 있으면:
-```bash
-npm install -g @google/gemini-cli
-```
-
-## 4. VS Code 확장 프로그램 설치
-
-아래 명령어로 확장 프로그램 2개 설치:
-
-```bash
-code --install-extension Google.geminicodeassist
-code --install-extension Google.gemini-cli-vscode-ide-companion
-```
-
-이미 설치되어 있으면 스킵.
-
-## 5. 글로벌 설정 디렉토리 생성
+### 디렉토리 생성
 
 **Windows (PowerShell):**
 ```powershell
@@ -58,9 +40,9 @@ New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.gemini\policies"
 mkdir -p ~/.gemini/policies
 ```
 
-## 6. 글로벌 GEMINI.md 생성
+### GEMINI.md 생성
 
-`~/.gemini/GEMINI.md` 파일을 아래 내용으로 생성 (1단계에서 이미 백업했으므로 덮어쓰기):
+`~/.gemini/GEMINI.md` 파일 생성:
 
 ```markdown
 # GEMINI.md
@@ -101,38 +83,22 @@ mkdir -p ~/.gemini/policies
 - 린트/포맷: `ruff check`, `ruff format`
 ```
 
-## 7. Python 개발 도구 설치
+> Python을 안 쓴다고 답했으면 "## Python 설정" 섹션을 제거하고 생성할 것.
 
-### uv 설치
+### settings.json 생성
 
-먼저 `uv --version`으로 설치 여부 확인. 없으면:
+`~/.gemini/settings.json` 파일:
 
-**Windows (PowerShell):**
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```json
+{
+  "model": "gemini-2.5-flash",
+  "theme": "default"
+}
 ```
 
-**Mac/Linux:**
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
+### 명령어 허용 정책 생성
 
-### ruff 설치
-
-uv 설치 후:
-```bash
-uv tool install ruff
-```
-
-설치 확인:
-```bash
-uv --version
-ruff --version
-```
-
-## 8. 명령어 허용 정책 생성
-
-`~/.gemini/policies/dev.toml` 파일을 아래 내용으로 생성:
+`~/.gemini/policies/dev.toml` 파일 생성:
 
 ```toml
 # 기본 개발 명령어 허용
@@ -187,35 +153,50 @@ command_prefix = "mkdir"
 decision = "allow"
 ```
 
-## 9. settings.json 생성
+## 3. IDE 연동
 
-`~/.gemini/settings.json` 파일:
-
-```json
-{
-  "model": "gemini-2.5-flash",
-  "theme": "default"
-}
+```
+/ide enable
 ```
 
-## 10. IDE 연동 안내
+## 4. Python 개발 도구 설치 (사전 질문에서 Yes인 경우만)
 
-아래 메시지를 출력해줘:
+### uv 설치
 
-> IDE 연동을 활성화하려면, `gemini` 실행 후 Gemini 프롬프트 안에서 `/ide enable`을 입력하세요.
-> (이 명령은 Gemini CLI 내부에서만 실행 가능합니다)
+먼저 `uv --version`으로 설치 여부 확인. 없으면:
 
-## 11. 최종 확인
+**Windows (PowerShell):**
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
 
-아래 항목 체크해서 결과 알려줘:
+**Mac/Linux:**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
-- [ ] Node.js 20+ 설치됨
-- [ ] Gemini CLI 설치됨
-- [ ] VS Code 확장 2개 설치됨
-- [ ] uv 설치됨
-- [ ] ruff 설치됨
+### ruff 설치
+
+uv 설치 후:
+```bash
+uv tool install ruff
+```
+
+설치 확인:
+```bash
+uv --version
+ruff --version
+```
+
+## 5. 최종 확인
+
+아래 항목 체크해서 결과 알려줘 (해당 항목만):
+
 - [ ] ~/.gemini/GEMINI.md 생성됨
 - [ ] ~/.gemini/policies/dev.toml 생성됨
 - [ ] ~/.gemini/settings.json 생성됨
+- [ ] /ide enable 실행됨
+- [ ] (Python 선택 시) uv 설치됨
+- [ ] (Python 선택 시) ruff 설치됨
 
-전부 완료되면 "세팅 완료! 터미널에서 `gemini` 입력 후 `/ide enable`을 실행하면 모든 준비 끝!" 이라고 알려줘.
+전부 완료되면 "세팅 완료! 이제 코딩을 시작하세요." 라고 알려줘.

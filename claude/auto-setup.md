@@ -1,6 +1,21 @@
 # Claude Code 자동 세팅 요청
 
-아래 작업을 순서대로 실행해줘. 각 단계 완료 후 결과를 알려줘.
+이 세팅을 시작하기 전에, 아래 질문을 먼저 해줘.
+답변을 받은 뒤 해당하는 단계만 실행할 것.
+
+## 사전 질문
+
+1. **Python 프로젝트를 할 예정인가요?** (Yes/No)
+   - Yes → 5단계(Python 도구 설치) 실행
+   - No → 5단계 스킵
+
+2. **Claude 구독(Pro/Max) 중인가요, API 키를 사용하나요?**
+   - 구독 중 → 인증 관련 안내 스킵
+   - API 키 → API 키 입력 안내 포함
+
+---
+
+질문 답변을 받았으면 아래 작업을 순서대로 실행해줘.
 OS를 먼저 확인하고, Windows면 PowerShell 명령어를, Mac/Linux면 bash 명령어를 사용해.
 
 > **기존 Claude Code 세팅이 있어도 OK.** 기존 설정 파일은 `.bak`으로 백업 후 새 설정으로 교체함.
@@ -13,35 +28,27 @@ OS를 먼저 확인하고, Windows면 PowerShell 명령어를, Mac/Linux면 bash
 
 존재하지 않는 파일은 스킵.
 
-## 2. 환경 확인
+## 2. 환경 확인 및 CLI 설치
 
+Node.js 18+ 확인:
 ```bash
 node --version
-npm --version
 ```
 
-Node.js 18 미만이면 https://nodejs.org 에서 설치하라고 안내해줘.
+없거나 18 미만이면 https://nodejs.org 에서 LTS 설치를 안내해줘.
+설치 완료 후 다음 진행.
 
-## 3. Claude Code 설치 확인
-
+Claude Code CLI 확인:
 ```bash
 claude --version
 ```
 
-설치 안 되어 있으면:
+없으면:
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-## 4. VS Code 확장 프로그램 설치
-
-```bash
-code --install-extension AnthropicAI.claude-code
-```
-
-이미 설치되어 있으면 스킵.
-
-## 5. 플러그인 설치 (3개)
+## 3. 플러그인 설치 (3개)
 
 ```bash
 claude install-skill anthropics/superpowers
@@ -49,9 +56,17 @@ claude install-skill anthropics/gsd
 claude install-skill anthropics/andrej-karpathy-skills
 ```
 
-각각 설치 결과 확인.
+각각 설치 결과 확인. 이미 설치되어 있으면 스킵.
 
-## 6. 글로벌 설정 디렉토리 생성
+| 플러그인 | 역할 |
+|---------|------|
+| **superpowers** | 브레인스토밍, TDD, 체계적 디버깅, 코드리뷰, 검증 워크플로우 |
+| **gsd** | 프로젝트 관리 — 스펙 → 플랜 → 실행 → 검증 파이프라인 |
+| **andrej-karpathy-skills** | 코딩 원칙 — 단순성, 정밀 수정, 가정 명시, 검증 기준 수립 |
+
+## 4. 글로벌 설정 생성
+
+### 디렉토리 생성
 
 **Windows (PowerShell):**
 ```powershell
@@ -63,9 +78,9 @@ New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude"
 mkdir -p ~/.claude
 ```
 
-## 7. 글로벌 CLAUDE.md 생성
+### CLAUDE.md 생성
 
-`~/.claude/CLAUDE.md` 파일을 아래 내용으로 생성 (1단계에서 이미 백업했으므로 덮어쓰기):
+`~/.claude/CLAUDE.md` 파일 생성:
 
 ```markdown
 # CLAUDE.md
@@ -78,9 +93,36 @@ mkdir -p ~/.claude
 - 포맷: `ruff format`
 ```
 
-> 코딩 원칙(단순성, TDD, 디버깅 등)은 플러그인(superpowers, gsd, andrej-karpathy-skills)이 자동 적용하므로 CLAUDE.md에 중복 작성하지 않음.
+> Python을 안 쓴다고 답했으면 이 파일은 빈 템플릿으로 생성:
+> ```markdown
+> # CLAUDE.md
+>
+> ## Project Rules
+>
+> <!-- 프로젝트에 맞는 지침을 여기에 추가하세요 -->
+> ```
 
-## 8. Python 개발 도구 설치
+### settings.json 생성
+
+`~/.claude/settings.json` 파일 생성:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(python *)",
+      "Bash(uv *)",
+      "Bash(ruff *)"
+    ]
+  }
+}
+```
+
+## 5. Python 개발 도구 설치 (사전 질문에서 Yes인 경우만)
 
 ### uv 설치
 
@@ -109,37 +151,16 @@ uv --version
 ruff --version
 ```
 
-## 9. 명령어 허용 설정
+## 6. 최종 확인
 
-`~/.claude/settings.json` 파일을 아래 내용으로 생성:
-
-```json
-{
-  "permissions": {
-    "allow": [
-      "Bash(git *)",
-      "Bash(npm *)",
-      "Bash(npx *)",
-      "Bash(node *)",
-      "Bash(python *)",
-      "Bash(uv *)",
-      "Bash(ruff *)"
-    ]
-  }
-}
-```
-
-## 10. 최종 확인
-
-아래 항목 체크해서 결과 알려줘:
+아래 항목 체크해서 결과 알려줘 (해당 항목만):
 
 - [ ] Node.js 18+ 설치됨
 - [ ] Claude Code CLI 설치됨
-- [ ] VS Code 확장 설치됨
 - [ ] 플러그인 3개 설치됨 (superpowers, gsd, andrej-karpathy-skills)
-- [ ] uv 설치됨
-- [ ] ruff 설치됨
 - [ ] ~/.claude/CLAUDE.md 생성됨
 - [ ] ~/.claude/settings.json 생성됨
+- [ ] (Python 선택 시) uv 설치됨
+- [ ] (Python 선택 시) ruff 설치됨
 
-전부 완료되면 "세팅 완료! 터미널에서 `claude` 입력하면 시작!" 이라고 알려줘.
+전부 완료되면 "세팅 완료! 이제 코딩을 시작하세요." 라고 알려줘.
