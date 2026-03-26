@@ -17,7 +17,7 @@ AI 코딩 어시스턴트 세팅 가이드 모음. VS Code 기준.
 
 | 파일 | 용도 |
 |------|------|
-| [gemini/setup-guide.md](gemini/setup-guide.md) | 사람이 할 것: Node.js + CLI + 확장 설치 (5분) |
+| [gemini/setup-guide.md](gemini/setup-guide.md) | 사람이 할 것: 확장 설치 + 로그인 (3분) |
 | [gemini/auto-setup.md](gemini/auto-setup.md) | Gemini에 던져서 나머지 자동 세팅 |
 
 ## 사용법

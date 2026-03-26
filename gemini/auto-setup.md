@@ -6,8 +6,8 @@
 ## 사전 질문
 
 1. **Python 프로젝트를 할 예정인가요?** (Yes/No)
-   - Yes → 4단계(Python 도구 설치) 실행
-   - No → 4단계 스킵
+   - Yes → 5단계(Python 도구 설치) 실행
+   - No → 5단계 스킵
 
 ---
 
@@ -25,7 +25,27 @@ OS를 먼저 확인하고, Windows면 PowerShell 명령어를, Mac/Linux면 bash
 
 존재하지 않는 파일은 스킵.
 
-## 2. 글로벌 설정 디렉토리 및 파일 생성
+## 2. 환경 확인 및 CLI 설치
+
+Node.js 20+ 확인:
+```bash
+node --version
+```
+
+없거나 20 미만이면 https://nodejs.org 에서 LTS 설치를 안내해줘.
+설치 완료 후 다음 진행.
+
+Gemini CLI 확인:
+```bash
+gemini --version
+```
+
+없으면:
+```bash
+npm install -g @google/gemini-cli
+```
+
+## 3. 글로벌 설정 디렉토리 및 파일 생성
 
 ### 디렉토리 생성
 
@@ -153,13 +173,13 @@ command_prefix = "mkdir"
 decision = "allow"
 ```
 
-## 3. IDE 연동
+## 4. IDE 연동
 
 ```
 /ide enable
 ```
 
-## 4. Python 개발 도구 설치 (사전 질문에서 Yes인 경우만)
+## 5. Python 개발 도구 설치 (사전 질문에서 Yes인 경우만)
 
 ### uv 설치
 
@@ -188,10 +208,12 @@ uv --version
 ruff --version
 ```
 
-## 5. 최종 확인
+## 6. 최종 확인
 
 아래 항목 체크해서 결과 알려줘 (해당 항목만):
 
+- [ ] Node.js 20+ 설치됨
+- [ ] Gemini CLI 설치됨
 - [ ] ~/.gemini/GEMINI.md 생성됨
 - [ ] ~/.gemini/policies/dev.toml 생성됨
 - [ ] ~/.gemini/settings.json 생성됨
