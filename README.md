@@ -1,26 +1,47 @@
-# AI Coding Setup
+# AI Assistant Setup
 
-AI 코딩 어시스턴트 세팅 가이드 모음. VS Code 기준.
+내 컴퓨터에 AI 어시스턴트 세팅하기. 3분이면 끝.
 
-> `auto-setup.md`에는 jun's 비법소스가 들어있습니다. 붙여넣기 한 방이면 AI가 알아서 세팅합니다.
+> 코딩뿐 아니라 **글쓰기, 데이터 분석, 문서 정리, 공부, 업무 자동화** 등 뭐든 시킬 수 있습니다.
+
+### 이런 걸 할 수 있어요
+
+- **코딩** — 코드 작성, 디버깅, 리팩토링
+- **글쓰기** — 초안 작성, 퇴고, 번역
+- **분석** — 데이터 정리, 시각화, 리포트
+- **문서** — 요약, 포맷 변환, 템플릿 생성
+- **학습** — 개념 설명, 예제 생성, 퀴즈
+- **자동화** — 반복 작업 처리, 파일 정리, 스크립트 생성
+
+---
+
+## 어떤 AI를 고를까?
+
+| | Claude Code (Anthropic) | Gemini CLI (Google) |
+|---|---|---|
+| **가격** | 유료 (API 종량제 / Max 구독) | **무료** (Google 계정만 있으면 됨) |
+| **일일 한도** | 구독 플랜에 따라 다름 | 1,000 요청 |
+| **강점** | 깊은 분석, 긴 맥락, 코딩 | 무료, 빠른 응답, 구글 연동 |
+
+> 처음이라면 **무료인 Gemini**부터 시작해보세요.
+
+---
 
 ## Claude Code (Anthropic)
-
-유료 (API 종량제 또는 Max 구독)
 
 | 파일 | 용도 |
 |------|------|
 | [claude/setup-guide.md](claude/setup-guide.md) | 사람이 할 것: 확장 설치 + 인증 (3분) |
-| [claude/auto-setup.md](claude/auto-setup.md) | Claude에 던져서 나머지 자동 세팅 |
+| [claude/auto-setup.md](claude/auto-setup.md) | AI에 붙여넣기 → 나머지 자동 세팅 |
 
 ## Gemini CLI (Google)
-
-무료 (Google 계정만 있으면 됨, 일일 1,000 요청)
 
 | 파일 | 용도 |
 |------|------|
 | [gemini/setup-guide.md](gemini/setup-guide.md) | 사람이 할 것: 확장 설치 + 로그인 (3분) |
-| [gemini/auto-setup.md](gemini/auto-setup.md) | Gemini에 던져서 나머지 자동 세팅 |
+| [gemini/auto-setup.md](gemini/auto-setup.md) | AI에 붙여넣기 → 나머지 자동 세팅 |
+
+---
 
 ## 사용법
 
