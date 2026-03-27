@@ -39,7 +39,7 @@ VS Code에서 Claude Code를 열고 (Ctrl+Shift+P → "Claude Code: Open"),
 
 Claude가 질문하면서 알아서 세팅함:
 - Node.js / CLI 설치 확인 및 안내
-- 플러그인 3개 설치 (superpowers, gsd, andrej-karpathy-skills)
+- 플러그인 설치 (sonmat)
 - 글로벌 CLAUDE.md 생성
 - Python 도구 설치 (uv, ruff) — 필요한 경우만
 - 명령어 허용 설정 (settings.json)
@@ -56,4 +56,5 @@ Claude가 질문하면서 알아서 세팅함:
   - `/help` — 도움말
   - `/model` — 모델 변경
   - `/compact` — 컨텍스트 압축
-  - `/gsd:help` — GSD 워크플로우 도움말
+  - `/sonmat:loop` — 자율 루프 실행 (기획→실행→평가→판단)
+  - `/sonmat:guard` — 커밋 전 가드레일 검증

@@ -48,21 +48,17 @@ claude --version
 npm install -g @anthropic-ai/claude-code
 ```
 
-## 3. 플러그인 설치 (3개)
+## 3. 플러그인 설치
 
 ```bash
-claude install-skill anthropics/superpowers
-claude install-skill anthropics/gsd
-claude install-skill anthropics/andrej-karpathy-skills
+claude install-skill jun0-ds/sonmat
 ```
 
-각각 설치 결과 확인. 이미 설치되어 있으면 스킵.
+설치 결과 확인. 이미 설치되어 있으면 스킵.
 
 | 플러그인 | 역할 |
 |---------|------|
-| **superpowers** | 브레인스토밍, TDD, 체계적 디버깅, 코드리뷰, 검증 워크플로우 |
-| **gsd** | 프로젝트 관리 — 스펙 → 플랜 → 실행 → 검증 파이프라인 |
-| **andrej-karpathy-skills** | 코딩 원칙 — 단순성, 정밀 수정, 가정 명시, 검증 기준 수립 |
+| **sonmat** | 자율 루프 — 기획→실행→평가→판단 반복, 도메인별 규율 자동 주입 |
 
 ## 4. 글로벌 설정 생성
 
@@ -157,7 +153,7 @@ ruff --version
 
 - [ ] Node.js 18+ 설치됨
 - [ ] Claude Code CLI 설치됨
-- [ ] 플러그인 3개 설치됨 (superpowers, gsd, andrej-karpathy-skills)
+- [ ] 플러그인 설치됨 (sonmat)
 - [ ] ~/.claude/CLAUDE.md 생성됨
 - [ ] ~/.claude/settings.json 생성됨
 - [ ] (Python 선택 시) uv 설치됨
