@@ -19,13 +19,17 @@
 
 ## 어떤 AI를 고를까?
 
-| | Claude Code (Anthropic) | Gemini CLI (Google) |
-|---|---|---|
-| **가격** | 유료 (API 종량제 / Max 구독) | **무료** (Google 계정만 있으면 됨) |
-| **일일 한도** | 구독 플랜에 따라 다름 | 1,000 요청 |
-| **강점** | 깊은 분석, 긴 맥락, 코딩 | 무료, 빠른 응답, 구글 연동 |
+| | Claude Code (Anthropic) | Gemini CLI (Google) | Codex CLI (OpenAI) |
+|---|---|---|---|
+| **가격** | 유료 (API 종량제 / Max 구독) | **무료** (Google 계정만 있으면 됨) | 무료 체험 중 / 유료 (ChatGPT 구독) |
+| **일일 한도** | 구독 플랜에 따라 다름 | 1,000 요청 | 구독 플랜에 따라 다름 |
+| **강점** | 깊은 분석, 긴 맥락, 코딩 | 무료, 빠른 응답, 구글 연동 | 강력한 에이전트, GPT-5 기반 |
+| **VS Code** | ✅ 확장 프로그램 | ✅ 확장 프로그램 | ✅ 확장 프로그램 |
+| **Windows** | ✅ 네이티브 | ✅ 네이티브 | ⚠️ WSL 권장 (CLI) |
+| **플러그인** | ✅ sonmat (검증규율) | ✅ sonmat (검증규율) | ✅ sonmat (검증규율) |
 
-> 처음이라면 **무료인 Gemini**부터 시작해보세요.
+> 💰 **무료로 시작하고 싶다면** → Gemini 또는 Codex (무료 체험)
+> 🔧 **깊은 코딩 + 검증 체계가 필요하다면** → Claude Code + sonmat
 
 ---
 
@@ -42,6 +46,13 @@
 |------|------|
 | [gemini/setup-guide.md](gemini/setup-guide.md) | 사람이 할 것: 확장 설치 + 로그인 (3분) |
 | [gemini/auto-setup.md](gemini/auto-setup.md) | AI에 붙여넣기 → 나머지 자동 세팅 |
+
+## Codex CLI (OpenAI)
+
+| 파일 | 용도 |
+|------|------|
+| [codex/setup-guide.md](codex/setup-guide.md) | 사람이 할 것: 확장 설치 + 인증 (3분) |
+| [codex/auto-setup.md](codex/auto-setup.md) | AI에 붙여넣기 → 나머지 자동 세팅 |
 
 ---
 

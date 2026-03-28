@@ -173,13 +173,26 @@ command_prefix = "mkdir"
 decision = "allow"
 ```
 
-## 4. IDE 연동
+## 4. 플러그인 설치 (sonmat)
+
+터미널에서 (Gemini CLI 밖에서):
+```bash
+gemini extensions install https://github.com/jun0-ds/sonmat-gemini
+```
+
+설치 결과 확인. 이미 설치되어 있으면 스킵.
+
+| 플러그인 | 역할 |
+|---------|------|
+| **sonmat** | 검증규율(Break/Cross/Ground) + domain hints — 코드 품질 자동 검증 체계 |
+
+## 5. IDE 연동
 
 ```
 /ide enable
 ```
 
-## 5. Python 개발 도구 설치 (사전 질문에서 Yes인 경우만)
+## 6. Python 개발 도구 설치 (사전 질문에서 Yes인 경우만)
 
 ### uv 설치
 
@@ -208,12 +221,13 @@ uv --version
 ruff --version
 ```
 
-## 6. 최종 확인
+## 7. 최종 확인
 
 아래 항목 체크해서 결과 알려줘 (해당 항목만):
 
 - [ ] Node.js 20+ 설치됨
 - [ ] Gemini CLI 설치됨
+- [ ] sonmat 확장 설치됨
 - [ ] ~/.gemini/GEMINI.md 생성됨
 - [ ] ~/.gemini/policies/dev.toml 생성됨
 - [ ] ~/.gemini/settings.json 생성됨

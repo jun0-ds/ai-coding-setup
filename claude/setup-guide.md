@@ -1,7 +1,7 @@
 # Claude Code 세팅 가이드 (VS Code)
 
 > Anthropic의 AI 코딩 어시스턴트.
-> API 종량제 (쓴 만큼만 과금) 또는 Max 구독 ($100/$200/$220/월)
+> API 종량제 (쓴 만큼만 과금) 또는 Max 구독 ($100/$200/월)
 
 ---
 
@@ -39,10 +39,14 @@ VS Code에서 Claude Code를 열고 (Ctrl+Shift+P → "Claude Code: Open"),
 
 Claude가 질문하면서 알아서 세팅함:
 - Node.js / CLI 설치 확인 및 안내
-- 플러그인 설치 (sonmat)
-- 글로벌 CLAUDE.md 생성
+- 플러그인 설치 (sonmat — 검증규율 + domain hints)
+- 글로벌 CLAUDE.md 생성 (사고규율, 호칭, Python 규칙 등)
+- settings.json 생성 (hooks, 플러그인, 명령어 허용)
 - Python 도구 설치 (uv, ruff) — 필요한 경우만
-- 명령어 허용 설정 (settings.json)
+
+> 💡 **이미 Claude Code를 쓰고 있다면?**
+> auto-setup.md를 붙여넣으면 "sonmat만 추가" 옵션을 선택할 수 있음.
+> 기존 설정을 유지하면서 플러그인만 병합.
 
 ---
 
@@ -58,3 +62,4 @@ Claude가 질문하면서 알아서 세팅함:
   - `/compact` — 컨텍스트 압축
   - `/sonmat:loop` — 자율 루프 실행 (기획→실행→평가→판단)
   - `/sonmat:guard` — 커밋 전 가드레일 검증
+  - `/sonmat:benchmark` — 비교 실험 프레임워크
