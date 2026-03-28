@@ -181,7 +181,7 @@ Global instructions for all projects.
 > `~/.claude/plugins/marketplaces/sonmat/hooks/run-hook.cmd`가 실제 존재하는지 확인하고,
 > 없으면 `run-hook.sh`로 교체.
 
-## 5. sonmat만 추가하는 경우 (사전 질문 3번에서 Yes)
+## (선택) sonmat만 추가하는 경우 — 사전 질문 3번에서 Yes일 때
 
 기존 `~/.claude/settings.json`이 있으면 **덮어쓰지 말고** 아래 키만 병합:
 - `hooks.SessionStart` — 위의 sonmat hook 추가

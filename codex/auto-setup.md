@@ -6,8 +6,8 @@
 ## 사전 질문
 
 1. **Python 프로젝트를 할 예정인가요?** (Yes/No)
-   - Yes → 5단계(Python 도구 설치) 실행
-   - No → 5단계 스킵
+   - Yes → 6단계(Python 도구 설치) 실행
+   - No → 6단계 스킵
 
 2. **ChatGPT 구독 중인가요, API 키를 사용하나요?**
    - 구독 중 또는 무료 체험 → ChatGPT 로그인 안내
@@ -20,7 +20,14 @@ OS를 먼저 확인하고, Windows면 WSL/PowerShell 명령어를, Mac/Linux면 
 
 > **Windows 사용자 참고:** Codex CLI는 macOS/Linux 네이티브 지원. Windows에서는 WSL 사용을 권장.
 
-## 1. 환경 확인 및 CLI 설치
+## 1. 기존 설정 백업
+
+`~/.codex/` 디렉토리가 이미 존재하면, 아래 파일들을 `.bak`으로 백업:
+- `~/.codex/instructions.md` → `~/.codex/instructions.md.bak`
+
+존재하지 않는 파일은 스킵.
+
+## 2. 환경 확인 및 CLI 설치
 
 Node.js 22+ 확인:
 ```bash
@@ -40,7 +47,7 @@ codex --version
 npm install -g @openai/codex
 ```
 
-## 2. 인증 설정
+## 3. 인증 설정
 
 ### ChatGPT 계정 사용 시
 
@@ -62,7 +69,7 @@ source ~/.bashrc
 [Environment]::SetEnvironmentVariable("OPENAI_API_KEY", "여기에_API_키_입력", "User")
 ```
 
-## 3. 플러그인 설치 (sonmat)
+## 4. 플러그인 설치 (sonmat)
 
 sonmat 플러그인 디렉토리를 설치한다:
 
@@ -76,7 +83,7 @@ git clone https://github.com/jun0-ds/sonmat-codex.git ~/.codex/plugins/sonmat
 |---------|------|
 | **sonmat** | 검증규율(Break/Cross/Ground) + domain hints — 코드 품질 자동 검증 체계 |
 
-## 4. 글로벌 설정 생성
+## 5. 글로벌 설정 생성
 
 ### instructions.md 생성
 
@@ -113,7 +120,7 @@ git clone https://github.com/jun0-ds/sonmat-codex.git ~/.codex/plugins/sonmat
 
 > Python을 안 쓴다고 답했으면 "## Python 설정" 섹션을 제거하고 생성할 것.
 
-## 5. Python 개발 도구 설치 (사전 질문에서 Yes인 경우만)
+## 6. Python 개발 도구 설치 (사전 질문에서 Yes인 경우만)
 
 ### uv 설치
 
@@ -142,7 +149,7 @@ uv --version
 ruff --version
 ```
 
-## 6. 최종 확인
+## 7. 최종 확인
 
 아래 항목 체크해서 결과 알려줘 (해당 항목만):
 
