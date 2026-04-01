@@ -23,7 +23,7 @@ OS를 먼저 확인하고, Windows면 WSL/PowerShell 명령어를, Mac/Linux면 
 ## 1. 기존 설정 백업
 
 `~/.codex/` 디렉토리가 이미 존재하면, 아래 파일들을 `.bak`으로 백업:
-- `~/.codex/instructions.md` → `~/.codex/instructions.md.bak`
+- `~/.codex/AGENTS.md` → `~/.codex/AGENTS.md.bak`
 
 존재하지 않는 파일은 스킵.
 
@@ -99,31 +99,17 @@ ls ~/.codex/skills/       # guard, loop, plan 있어야 함
 
 ## 5. 글로벌 설정 생성
 
-### instructions.md 생성
+### AGENTS.md 생성
 
-`~/.codex/instructions.md` 파일 생성:
+`~/.codex/AGENTS.md` 파일 생성:
 
 ```markdown
-# Codex Instructions
+# AGENTS.md
 
-## 코딩 원칙
+## Discipline
 
-### 생각 먼저, 코드는 나중에
-- 구현 전에 요구사항과 설계를 먼저 정리할 것
-- "뭘 만들지"가 명확해진 다음에 코드를 쓸 것
-- 복잡한 작업은 단계별로 나눠서 계획을 세울 것
-
-### 단순하게
-- 최소한의 코드로 목표를 달성할 것
-- 지금 필요 없는 기능을 미리 만들지 말 것
-- 비슷한 코드 3줄이 섣부른 추상화보다 나음
-
-### 정확하게 고치기
-- 요청한 범위만 수정할 것. 주변 코드 리팩토링 금지
-- 코드 변경 전 반드시 기존 코드를 먼저 읽을 것
-
-### 테스트로 검증
-- "됐다"고 말하기 전에 실제로 테스트를 돌려서 확인할 것
+See `~/.codex/discipline/core.md` for verification rules.
+See `~/.codex/discipline/hints.md` for domain-specific traps.
 
 ## Python 설정
 
@@ -171,7 +157,7 @@ ruff --version
 - [ ] Codex CLI 설치됨
 - [ ] 인증 완료 (ChatGPT 로그인 또는 API 키 설정)
 - [ ] sonmat 플러그인 설치됨
-- [ ] ~/.codex/instructions.md 생성됨
+- [ ] ~/.codex/AGENTS.md 생성됨
 - [ ] (Python 선택 시) uv 설치됨
 - [ ] (Python 선택 시) ruff 설치됨
 
