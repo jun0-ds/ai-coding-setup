@@ -69,47 +69,52 @@ source ~/.bashrc
 [Environment]::SetEnvironmentVariable("OPENAI_API_KEY", "여기에_API_키_입력", "User")
 ```
 
-## 4. 플러그인 설치 (sonmat)
+## 4. sonmat 설치 (검증 규율 체계)
 
-sonmat의 discipline과 skills를 Codex 환경에 복사한다.
+sonmat을 통째로 Codex 환경에 설치한다. **흩어진 파일이 아니라 하나의 체계**로 유지할 것.
 
 ```bash
-# sonmat 클론 (임시)
-git clone https://github.com/jun0-ds/sonmat.git /tmp/sonmat
-
-# discipline + skills 복사
-cp -r /tmp/sonmat/discipline ~/.codex/
-cp -r /tmp/sonmat/skills ~/.codex/
-
-# 정리
-rm -rf /tmp/sonmat
+git clone https://github.com/jun0-ds/sonmat.git ~/.codex/sonmat
 ```
 
-복사 결과 확인:
+설치 확인:
 ```bash
-ls ~/.codex/discipline/  # core.md, hints.md 있어야 함
-ls ~/.codex/skills/       # guard, loop, plan 있어야 함
+ls ~/.codex/sonmat/discipline/  # core.md, hints.md
+ls ~/.codex/sonmat/skills/       # guard, loop, plan
+ls ~/.codex/sonmat/agents/       # sonmat-worker.md
 ```
 
 | 플러그인 | 역할 |
 |---------|------|
 | **sonmat** | 검증규율(Break/Cross/Ground) + domain hints — 코드 품질 자동 검증 체계 |
 
-> 참고: sonmat은 Claude Code 플러그인이 기본이고, 다른 CLI에서는 discipline/skills 파일을 수동으로 복사해서 사용합니다. 자세한 내용은 [sonmat README](https://github.com/jun0-ds/sonmat#other-ai-clis)를 참고하세요.
-
 ## 5. 글로벌 설정 생성
 
 ### AGENTS.md 생성
 
-`~/.codex/AGENTS.md` 파일 생성:
+`~/.codex/AGENTS.md` 파일을 생성한다.
+
+**중요:** `~/.codex/sonmat/discipline/core.md`와 `~/.codex/sonmat/discipline/hints.md`의 내용을 읽어서 AGENTS.md 안에 **직접 붙여넣기** 할 것. 파일 참조("see core.md")가 아니라 내용 자체를 넣어야 한다 — 참조만 하면 안 읽을 수 있다.
+
+AGENTS.md 구조:
 
 ```markdown
 # AGENTS.md
 
-## Discipline
+## Core Discipline (sonmat)
 
-See `~/.codex/discipline/core.md` for verification rules.
-See `~/.codex/discipline/hints.md` for domain-specific traps.
+(여기에 discipline/core.md 내용 전체를 붙여넣기)
+
+## Domain Hints
+
+(여기에 discipline/hints.md 내용 전체를 붙여넣기)
+
+## Skills
+
+Available skills (`~/.codex/sonmat/skills/`):
+- `guard/` — pre-commit verification
+- `loop/` — autonomous loop with escalation
+- `plan/` — milestone/phase management
 
 ## Python 설정
 
