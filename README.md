@@ -26,7 +26,8 @@
 | **강점** | 깊은 분석, 긴 맥락, 코딩 | 무료, 빠른 응답, 구글 연동 | 강력한 에이전트, GPT-5 기반 |
 | **VS Code** | ✅ 확장 프로그램 | ✅ 확장 프로그램 | ✅ 확장 프로그램 |
 | **Windows** | ✅ 네이티브 | ✅ 네이티브 | ⚠️ WSL 권장 (CLI) |
-| **플러그인** | ✅ [sonmat](https://github.com/jun0-ds/sonmat) | ✅ [sonmat](https://github.com/jun0-ds/sonmat-gemini) | ✅ [sonmat](https://github.com/jun0-ds/sonmat-codex) |
+| **글로벌 지침 파일** | `CLAUDE.md` | `GEMINI.md` | `AGENTS.md` |
+| **플러그인** | ✅ [sonmat](https://github.com/jun0-ds/sonmat) | ✅ [sonmat](https://github.com/jun0-ds/sonmat) (수동 복사) | ✅ [sonmat](https://github.com/jun0-ds/sonmat) (수동 복사) |
 
 > 💰 **무료로 시작하고 싶다면** → Gemini 또는 Codex (무료 체험)
 > 🔧 **깊은 코딩 + 검증 체계가 필요하다면** → Claude Code + sonmat

@@ -71,17 +71,31 @@ source ~/.bashrc
 
 ## 4. 플러그인 설치 (sonmat)
 
-sonmat 플러그인 디렉토리를 설치한다:
+sonmat의 discipline과 skills를 Codex 환경에 복사한다.
 
 ```bash
-git clone https://github.com/jun0-ds/sonmat-codex.git ~/.codex/plugins/sonmat
+# sonmat 클론 (임시)
+git clone https://github.com/jun0-ds/sonmat.git /tmp/sonmat
+
+# discipline + skills 복사
+cp -r /tmp/sonmat/discipline ~/.codex/
+cp -r /tmp/sonmat/skills ~/.codex/
+
+# 정리
+rm -rf /tmp/sonmat
 ```
 
-설치 결과 확인. 이미 설치되어 있으면 스킵.
+복사 결과 확인:
+```bash
+ls ~/.codex/discipline/  # core.md, hints.md 있어야 함
+ls ~/.codex/skills/       # guard, loop, plan 있어야 함
+```
 
 | 플러그인 | 역할 |
 |---------|------|
 | **sonmat** | 검증규율(Break/Cross/Ground) + domain hints — 코드 품질 자동 검증 체계 |
+
+> 참고: sonmat은 Claude Code 플러그인이 기본이고, 다른 CLI에서는 discipline/skills 파일을 수동으로 복사해서 사용합니다. 자세한 내용은 [sonmat README](https://github.com/jun0-ds/sonmat#other-ai-clis)를 참고하세요.
 
 ## 5. 글로벌 설정 생성
 
