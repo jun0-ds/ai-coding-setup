@@ -62,4 +62,5 @@ Claude가 질문하면서 알아서 세팅함:
   - `/compact` — 컨텍스트 압축
   - `/sonmat:loop` — 자율 루프 실행 (기획→실행→평가→판단)
   - `/sonmat:guard` — 커밋 전 가드레일 검증
-  - `/sonmat:benchmark` — 비교 실험 프레임워크
+  - `/sonmat:plan` — 마일스톤/페이즈 관리
+  - `/sonmat:inspect` — 깊은 검증 모드 (의존성, 부작용, 롤백 점검)
