@@ -85,6 +85,7 @@ GEMINI.md 구조:
 - `guard/` — pre-commit 검증
 - `loop/` — 자율 루프 + 에스컬레이션
 - `plan/` — 마일스톤/페이즈 관리
+- `inspect/` — 깊은 검증 모드 (의존성, 부작용, 롤백 점검)
 
 ## Python 설정
 
@@ -167,14 +168,19 @@ decision = "allow"
 
 sonmat을 통째로 Gemini 환경에 설치한다. **흩어진 파일이 아니라 하나의 체계**로 유지할 것.
 
+이미 설치되어 있으면 최신 버전으로 업데이트:
 ```bash
-git clone https://github.com/jun0-ds/sonmat.git ~/.gemini/sonmat
+if [ -d ~/.gemini/sonmat/.git ]; then
+  git -C ~/.gemini/sonmat pull origin main --ff-only
+else
+  git clone https://github.com/jun0-ds/sonmat.git ~/.gemini/sonmat
+fi
 ```
 
 설치 확인:
 ```bash
 ls ~/.gemini/sonmat/discipline/  # core.md, hints.md
-ls ~/.gemini/sonmat/skills/       # guard, loop, plan
+ls ~/.gemini/sonmat/skills/       # guard, loop, plan, inspect
 ls ~/.gemini/sonmat/agents/       # sonmat-worker.md
 ```
 

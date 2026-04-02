@@ -82,20 +82,14 @@ mkdir -p ~/.claude
 
 `~/.claude/CLAUDE.md` 파일 생성:
 
+> **sonmat의 사고규율(Thinking/Action Rules)은 여기에 직접 쓰지 않는다.**
+> 3단계에서 설치한 sonmat 플러그인의 session-start 훅이 첫 실행 시
+> `~/.claude/CLAUDE.md`에 discipline 파일 참조 블록(`## sonmat`)을 자동으로 심는다.
+> Claude Code는 해당 경로의 최신 파일을 매 세션마다 읽으므로,
+> sonmat이 업데이트되면 규율도 자동으로 최신화된다.
+
 ```markdown
 # CLAUDE.md
-
-## Thinking Discipline
-
-### Attitude: I can be wrong
-When a result comes back, when you feel certain — that is exactly the moment doubt is needed.
-
-### Thinking Directions
-1. **Strip to essentials**: Which of my assumptions are truly certain? Am I building from first principles, not analogy?
-2. **See differently**: What would a different tool or perspective reveal? Every tool has invisible scope boundaries.
-3. **Predict before acting**: What outcome will this produce? Does it match what the user expects?
-
----
 
 Global instructions for all projects.
 
@@ -120,18 +114,17 @@ Global instructions for all projects.
 
 - sonmat hook이 git repo 진입 시 `CLAUDE.md`를 자동 생성한다 (없을 때만).
 - 프로젝트 규칙은 처음부터 채우지 않는다. 대화 중 발견된 규칙을 사용자 확인 후 추가한다.
-- 템플릿:
-
-> # CLAUDE.md
->
-> > 글로벌 지침(`~/.claude/CLAUDE.md`) 상속: 사고규율, 검증규율, 호칭, Python/uv 규칙 등.
->
-> ## Project Rules
->
-> <!-- 대화 중 발견된 프로젝트 규칙이 여기에 추가됩니다. -->
 ```
 
 > Python을 안 쓴다고 답했으면 "## 1. Python Project Rules" 섹션을 제거하고 생성할 것.
+
+> **참고:** 첫 세션 실행 후 `~/.claude/CLAUDE.md` 하단에 아래 블록이 자동 추가됨:
+> ```
+> ## sonmat
+> - Discipline: `~/.claude/plugins/marketplaces/sonmat/discipline/core.md`
+> - Domain hints: `~/.claude/plugins/marketplaces/sonmat/discipline/hints.md`
+> - Memory: `~/.claude/sonmat/memory/`
+> ```
 
 ### settings.json 생성
 

@@ -73,14 +73,19 @@ source ~/.bashrc
 
 sonmat을 통째로 Codex 환경에 설치한다. **흩어진 파일이 아니라 하나의 체계**로 유지할 것.
 
+이미 설치되어 있으면 최신 버전으로 업데이트:
 ```bash
-git clone https://github.com/jun0-ds/sonmat.git ~/.codex/sonmat
+if [ -d ~/.codex/sonmat/.git ]; then
+  git -C ~/.codex/sonmat pull origin main --ff-only
+else
+  git clone https://github.com/jun0-ds/sonmat.git ~/.codex/sonmat
+fi
 ```
 
 설치 확인:
 ```bash
 ls ~/.codex/sonmat/discipline/  # core.md, hints.md
-ls ~/.codex/sonmat/skills/       # guard, loop, plan
+ls ~/.codex/sonmat/skills/       # guard, loop, plan, inspect
 ls ~/.codex/sonmat/agents/       # sonmat-worker.md
 ```
 
@@ -115,6 +120,7 @@ Available skills (`~/.codex/sonmat/skills/`):
 - `guard/` — pre-commit verification
 - `loop/` — autonomous loop with escalation
 - `plan/` — milestone/phase management
+- `inspect/` — deep inspection mode (dependencies, side effects, rollback)
 
 ## Python 설정
 
