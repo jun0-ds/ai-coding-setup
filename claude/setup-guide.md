@@ -55,6 +55,7 @@ Claude가 질문하면서 알아서 세팅함:
 - 요금: API 종량제 (Sonnet ~$3/MTok, Opus ~$15/MTok) 또는 Max 구독
 - 기본 모델: Claude Sonnet 4.6
 - 모델 변경: 채팅 중 `/model` 입력
+- **문제 해결: [troubleshooting.md](troubleshooting.md)** — 플러그인 안 보임, Windows 경로 문제 등
 - 공식 문서: https://docs.anthropic.com/en/docs/claude-code
 - 주요 슬래시 명령어:
   - `/help` — 도움말

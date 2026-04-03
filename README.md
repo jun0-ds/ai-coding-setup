@@ -41,6 +41,7 @@
 |------|------|
 | [claude/setup-guide.md](claude/setup-guide.md) | 사람이 할 것: 확장 설치 + 인증 (3분) |
 | [claude/auto-setup.md](claude/auto-setup.md) | AI에 붙여넣기 → 나머지 자동 세팅 |
+| [claude/troubleshooting.md](claude/troubleshooting.md) | 문제 해결 (플러그인, Windows 이슈) |
 
 ## Gemini CLI (Google)
 
