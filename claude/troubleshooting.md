@@ -131,16 +131,25 @@ Windows 절대경로로 변환하는 동작.
 ### 어시스턴트가 `/plugin` 명령을 실행하지 못하는 경우
 
 **증상:** Claude Code 어시스턴트에게 "플러그인 설치해줘"라고 요청했지만,
-어시스턴트가 `/plugin` 이나 `claude install-skill` 등의 CLI 명령을 직접 실행하지 못함.
+어시스턴트가 `claude plugin install` 등의 CLI 명령을 직접 실행하지 못함.
 
-**원인:** 슬래시 명령어(`/plugin`, `/model` 등)는 사용자가 직접 입력해야 하는
-인터랙티브 명령이다. 어시스턴트는 이를 대신 실행할 수 없다.
+**원인:** `claude plugin` 등 CLI 명령과 `/plugin` 등 슬래시 명령은 사용자가 터미널에서 직접 입력해야 한다. VSCode 확장 등 에이전트 환경에서는 어시스턴트가 이를 대신 실행할 수 없다.
 
-**해결:** 사용자가 직접 터미널에서 실행:
-```bash
-claude plugin marketplace add jun0-ds/sonmat
-claude plugin install sonmat@sonmat
-```
+**해결 — 사용자가 직접 실행** (아래 단계를 따라하세요):
+
+1. **터미널 열기**
+   - VS Code: `Ctrl + `` ` (백틱) 또는 상단 메뉴 → Terminal → New Terminal
+   - 일반: OS 터미널 앱 실행 (Windows: PowerShell/Git Bash, Mac/Linux: Terminal)
+
+2. **아래 명령어를 한 줄씩 복사 → 터미널에 붙여넣기 → Enter**:
+   ```bash
+   claude plugin marketplace add jun0-ds/sonmat
+   ```
+   ```bash
+   claude plugin install sonmat@sonmat
+   ```
+
+3. **새 세션 시작**: 현재 대화를 닫고 다시 열어야 스킬이 로드된다.
 
 ---
 
