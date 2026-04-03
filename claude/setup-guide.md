@@ -39,8 +39,8 @@ VS Code에서 Claude Code를 열고 (Ctrl+Shift+P → "Claude Code: Open"),
 
 Claude가 질문하면서 알아서 세팅함:
 - Node.js / CLI 설치 확인 및 안내
-- 플러그인 설치 (sonmat — 검증규율 + domain hints)
-- 글로벌 CLAUDE.md 생성 (사고규율, 호칭, Python 규칙 등)
+- 플러그인 설치 (sonmat — AI 사고·검증 규율 체계)
+- 글로벌 CLAUDE.md 생성 (호칭/말투 커스터마이즈, Python 규칙 등)
 - settings.json 생성 (hooks, 플러그인, 명령어 허용)
 - Python 도구 설치 (uv, ruff) — 필요한 경우만
 
@@ -60,7 +60,7 @@ Claude가 질문하면서 알아서 세팅함:
   - `/help` — 도움말
   - `/model` — 모델 변경
   - `/compact` — 컨텍스트 압축
-  - `/sonmat:loop` — 자율 루프 실행 (기획→실행→평가→판단)
+  - `/sonmat:autoloop` — 자율 루프 실행 (기획→실행→평가→판단)
   - `/sonmat:guard` — 커밋 전 가드레일 검증
-  - `/sonmat:plan` — 마일스톤/페이즈 관리
   - `/sonmat:inspect` — 깊은 검증 모드 (의존성, 부작용, 롤백 점검)
+  - `/sonmat:imp` — 역발상 검증 (해석·계획·결정에 반론 제기)

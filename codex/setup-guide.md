@@ -43,8 +43,8 @@ VS Code에서 Codex를 열고,
 
 Codex가 질문하면서 알아서 세팅함:
 - Node.js / CLI 설치 확인 및 안내
-- 플러그인 설치 (sonmat — 검증규율 + domain hints)
-- 글로벌 instructions.md 생성
+- 플러그인 설치 (sonmat — AI 사고·검증 규율 체계)
+- 글로벌 AGENTS.md 생성 (호칭/말투 커스터마이즈, 코딩 원칙 등)
 - Python 도구 설치 (uv, ruff) — 필요한 경우만
 
 ---
