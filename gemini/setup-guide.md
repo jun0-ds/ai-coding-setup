@@ -38,8 +38,8 @@ VS Code에서 Gemini Code Assist 채팅을 열고,
 
 Gemini가 질문하면서 알아서 세팅함:
 - Node.js / Gemini CLI 설치 확인 및 안내
-- 플러그인 설치 (sonmat — 검증규율 + domain hints)
-- 글로벌 GEMINI.md 생성 (코딩 원칙 포함)
+- 플러그인 설치 (sonmat — AI 사고·검증 규율 체계)
+- 글로벌 GEMINI.md 생성 (호칭/말투 커스터마이즈, 코딩 원칙 등)
 - Python 도구 설치 (uv, ruff) — 필요한 경우만
 - 명령어 허용 정책 설정 (policies/dev.toml)
 - settings.json 생성

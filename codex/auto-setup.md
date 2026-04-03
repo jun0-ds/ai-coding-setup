@@ -13,6 +13,12 @@
    - 구독 중 또는 무료 체험 → ChatGPT 로그인 안내
    - API 키 → 환경 변수 설정 안내
 
+3. **AI에게 원하는 호칭이나 말투가 있나요?** (자유롭게 답변)
+   - 예: "나를 '선배'라고 불러줘, 너는 '막내'야"
+   - 예: "편하게 반말로 해줘"
+   - 예: "존댓말로 해줘"
+   - 딱히 없으면 → 호칭 섹션 생략, 기본 존댓말
+
 ---
 
 질문 답변을 받았으면 아래 작업을 순서대로 실행해줘.
@@ -58,6 +64,8 @@ codex
 
 ### API 키 사용 시
 
+> ⚠️ **보안 주의:** API 키는 민감 정보입니다. `.bashrc`에 직접 넣는 대신 `.env` 파일이나 시크릿 관리 도구 사용을 권장합니다. 아래는 가장 간단한 방법이지만, 이 파일은 **절대 git에 커밋하지 마세요.**
+
 **Mac/Linux (bash/zsh):**
 ```bash
 echo 'export OPENAI_API_KEY="여기에_API_키_입력"' >> ~/.bashrc
@@ -69,7 +77,7 @@ source ~/.bashrc
 [Environment]::SetEnvironmentVariable("OPENAI_API_KEY", "여기에_API_키_입력", "User")
 ```
 
-## 4. sonmat 설치 (검증 규율 체계)
+## 4. sonmat 설치 (AI 사고·검증 규율 체계)
 
 sonmat을 통째로 Codex 환경에 설치한다. **흩어진 파일이 아니라 하나의 체계**로 유지할 것.
 
@@ -85,13 +93,13 @@ fi
 설치 확인:
 ```bash
 ls ~/.codex/sonmat/discipline/  # core.md, hints.md
-ls ~/.codex/sonmat/skills/       # guard, loop, plan, inspect
+ls ~/.codex/sonmat/skills/       # autoloop, guard, imp, inspect, scribe
 ls ~/.codex/sonmat/agents/       # sonmat-worker.md
 ```
 
 | 플러그인 | 역할 |
 |---------|------|
-| **sonmat** | 검증규율(Break/Cross/Ground) + domain hints — 코드 품질 자동 검증 체계 |
+| **sonmat** | AI의 사고·검증 규율 체계 — 코드를 짜기 전에 "이게 맞나?" 한 번 더 생각하게 만드는 플러그인 |
 
 ## 5. 글로벌 설정 생성
 
@@ -106,6 +114,13 @@ AGENTS.md 구조:
 ```markdown
 # AGENTS.md
 
+## 호칭
+
+(사전 질문 3번 답변을 바탕으로 작성. 예시:)
+- 사용자 → Codex: "(사용자가 정한 호칭)"
+- Codex → 사용자: "(사용자가 정한 호칭)"
+- (사용자가 원하는 말투 스타일)
+
 ## Core Discipline (sonmat)
 
 (여기에 discipline/core.md 내용 전체를 붙여넣기)
@@ -117,10 +132,11 @@ AGENTS.md 구조:
 ## Skills
 
 Available skills (`~/.codex/sonmat/skills/`):
+- `autoloop/` — autonomous loop with escalation
 - `guard/` — pre-commit verification
-- `loop/` — autonomous loop with escalation
-- `plan/` — milestone/phase management
+- `imp/` — devil's advocate for reasoning
 - `inspect/` — deep inspection mode (dependencies, side effects, rollback)
+- `scribe/` — background meta channel (bridge notes, progress tracking)
 
 ## Python 설정
 
@@ -129,6 +145,7 @@ Available skills (`~/.codex/sonmat/skills/`):
 - 린트/포맷: `ruff check`, `ruff format`
 ```
 
+> 사전 질문 3번에서 호칭/말투 요청이 **없었으면** "## 호칭" 섹션을 제거하고 생성할 것.
 > Python을 안 쓴다고 답했으면 "## Python 설정" 섹션을 제거하고 생성할 것.
 
 ## 6. Python 개발 도구 설치 (사전 질문에서 Yes인 경우만)
@@ -137,12 +154,12 @@ Available skills (`~/.codex/sonmat/skills/`):
 
 먼저 `uv --version`으로 설치 여부 확인. 없으면:
 
-**Windows (PowerShell) / WSL:**
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
+**Windows (PowerShell):**
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-**Mac/Linux:**
+**Mac/Linux / WSL:**
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
@@ -167,7 +184,7 @@ ruff --version
 - [ ] Node.js 22+ 설치됨
 - [ ] Codex CLI 설치됨
 - [ ] 인증 완료 (ChatGPT 로그인 또는 API 키 설정)
-- [ ] sonmat 플러그인 설치됨
+- [ ] sonmat 설치됨
 - [ ] ~/.codex/AGENTS.md 생성됨
 - [ ] (Python 선택 시) uv 설치됨
 - [ ] (Python 선택 시) ruff 설치됨
