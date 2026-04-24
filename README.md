@@ -1,5 +1,11 @@
 # AI Assistant Setup
 
+### 👉 **[사이트에서 편하게 보기 (jun0-ds.github.io/ai-assistant-setup)](https://jun0-ds.github.io/ai-assistant-setup/)**
+
+> 깃허브 화면이 어렵게 느껴지면 위 링크로 이동하세요. 깔끔한 웹페이지로 같은 내용이 보입니다.
+
+---
+
 > ⚠️ 썸네일 보고 놀라지 마세요. 군침이 싹 돕니다.
 
 내 컴퓨터에 AI 어시스턴트 세팅하기.
