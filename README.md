@@ -2,7 +2,7 @@
 
 > ⚠️ 썸네일 보고 놀라지 마세요. 군침이 싹 돕니다.
 
-내 컴퓨터에 AI 어시스턴트 세팅하기. 3분이면 끝.
+내 컴퓨터에 AI 어시스턴트 세팅하기.
 
 > 코딩뿐 아니라 **글쓰기, 데이터 분석, 문서 정리, 공부, 업무 자동화** 등 뭐든 시킬 수 있습니다.
 
@@ -17,50 +17,98 @@
 
 ---
 
-## 어떤 AI를 고를까?
+## 🧭 당신은 누구인가요? — 경로 먼저 고르기
 
-| | Claude Code (Anthropic) | Gemini CLI (Google) | Codex CLI (OpenAI) |
-|---|---|---|---|
-| **가격** | 유료 (API 종량제 / Max 구독) | **무료** (Google 계정만 있으면 됨) | 무료 체험 중 / 유료 (ChatGPT 구독) |
-| **일일 한도** | 구독 플랜에 따라 다름 | 1,000 요청 | 구독 플랜에 따라 다름 |
-| **Node.js** | 18+ | 20+ | 22+ |
-| **강점** | 깊은 분석, 긴 맥락, 코딩 | 무료, 빠른 응답, 구글 연동 | 강력한 에이전트, GPT-5 기반 |
-| **VS Code** | ✅ 확장 프로그램 | ✅ 확장 프로그램 | ✅ 확장 프로그램 |
-| **Windows** | ✅ 네이티브 | ✅ 네이티브 | ⚠️ WSL 권장 (CLI) |
-| **글로벌 지침 파일** | `CLAUDE.md` | `GEMINI.md` | `AGENTS.md` |
-| **플러그인** | ✅ [sonmat](https://github.com/jun0-ds/sonmat) | ✅ [sonmat](https://github.com/jun0-ds/sonmat) (자동 설치) | ✅ [sonmat](https://github.com/jun0-ds/sonmat) (자동 설치) |
+가이드 길이에 압도되지 말고, 해당되는 한 줄만 따라가세요.
 
-> 💰 **무료로 시작하고 싶다면** → Gemini 또는 Codex (무료 체험)
-> 🔧 **깊은 코딩 + 검증 체계가 필요하다면** → Claude Code + sonmat
+| 당신 | 추천 | 왜 |
+|------|------|------|
+| **일단 무료로 시작해보고 싶다** | 👉 [Codex (무료 체험)](#codex-cli-openai--무료-입문-추천) | ChatGPT 계정이면 바로 시작. 결제 정보 안 물어봄. |
+| **ChatGPT / Claude 웹을 이미 돈 내고 쓴다** | 👉 [Claude Code (유료)](#claude-code-anthropic--유료-메인-추천) | 가장 완성도 높음. 구독 중이면 추가 비용 없음. |
+| **진지하게 오래 쓸 거다** | 👉 [Claude Code (유료)](#claude-code-anthropic--유료-메인-추천) | 긴 맥락·깊은 분석·플러그인 생태계. |
+| **개발은 안 한다, 글쓰기·분석만 하고 싶다** | 👉 둘 다 OK — [Codex](#codex-cli-openai--무료-입문-추천)로 무료 시작 | 세팅 과정은 거의 동일. |
+
+> 💡 **Claude / Codex 모두 VS Code 안에서 쓰는 AI 채팅 도구입니다.** 웹 ChatGPT와 비슷한 채팅 경험인데, **내 컴퓨터 파일을 직접 읽고 고쳐줍니다.** 이게 핵심 차이.
 
 ---
 
-## Claude Code (Anthropic)
+## ⚠️ 세팅 전에 알아둘 것 (비개발자 필독)
+
+이 가이드는 몇 가지 **생소한 개념**을 씁니다. 지금 모든 용어를 이해할 필요는 없어요 — 나올 때마다 여기 돌아오세요.
+
+| 용어 | 쉬운 설명 |
+|------|----------|
+| **VS Code** | 마이크로소프트가 만든 무료 코드 편집기. AI를 여기 안에 붙여서 씁니다. |
+| **터미널 (Terminal / PowerShell)** | 검은 화면에 명령어를 치는 도구. VS Code 안에서도 열 수 있습니다 (``Ctrl+` `` 키). |
+| **CLI** | "Command Line Interface"의 약자. 터미널에서 돌아가는 프로그램. |
+| **Node.js** | AI 도구가 돌아가기 위한 엔진. 한 번만 설치하면 됩니다. |
+| **npm** | Node.js에 딸려오는 설치 도구. `npm install ~~` 명령으로 프로그램을 깝니다. |
+| **API 키** | "내 계정 비밀번호" 같은 것. AI에게 요금을 누구에게 받을지 알려주는 코드. |
+| **플러그인 (sonmat)** | 선택 사항. AI가 성급하게 답하기 전에 "정말 맞나?" 한 번 더 검증하는 보조 장치. |
+
+### 예상 소요 시간
+
+- **정말 처음이면 (VS Code·Node.js 둘 다 없음)**: 20~30분
+- **VS Code는 써봤음**: 10~15분
+- **"3분" 아닙니다** — 과장 없이 써둡니다.
+
+### 비용 — 솔직하게
+
+- **Codex (무료 체험)**: ChatGPT 계정만 있으면 현재 무료. 한도 초과 시 유료 전환 안내가 뜸.
+- **Claude Code (유료)**: 두 가지 방식 중 하나.
+  - **API 종량제**: $5부터 충전 → 가볍게 쓰면 **한 달 $3~10 정도**. 많이 쓰면 그 이상.
+  - **Claude Pro/Max 구독**: 월 $20 / $100~200. 이미 구독 중이면 추가 비용 없음.
+
+---
+
+## Claude Code (Anthropic) — 유료, 메인 추천
+
+> Anthropic의 AI 어시스턴트. 긴 맥락·깊은 분석·플러그인 생태계가 강점.
 
 | 파일 | 용도 |
 |------|------|
-| [claude/setup-guide.md](claude/setup-guide.md) | 사람이 할 것: 확장 설치 + 인증 (3분) |
-| [claude/auto-setup.md](claude/auto-setup.md) | AI에 붙여넣기 → 나머지 자동 세팅 |
-| [claude/troubleshooting.md](claude/troubleshooting.md) | 문제 해결 (플러그인, Windows 이슈) |
+| [claude/setup-guide.md](claude/setup-guide.md) | 👉 **여기부터 시작** — VS Code 확장 설치 + 로그인 |
+| [claude/auto-setup.md](claude/auto-setup.md) | 설치 끝나면 AI 채팅창에 붙여넣기 → 나머지 자동 |
+| [claude/troubleshooting.md](claude/troubleshooting.md) | 문제 해결 (Windows·플러그인 이슈) |
 
-## Gemini CLI (Google)
+## Codex CLI (OpenAI) — 무료 입문 추천
 
-| 파일 | 용도 |
-|------|------|
-| [gemini/setup-guide.md](gemini/setup-guide.md) | 사람이 할 것: 확장 설치 + 로그인 (3분) |
-| [gemini/auto-setup.md](gemini/auto-setup.md) | AI에 붙여넣기 → 나머지 자동 세팅 |
-
-## Codex CLI (OpenAI)
+> OpenAI의 AI 어시스턴트. ChatGPT 계정으로 무료 체험 가능.
 
 | 파일 | 용도 |
 |------|------|
-| [codex/setup-guide.md](codex/setup-guide.md) | 사람이 할 것: 확장 설치 + 인증 (3분) |
-| [codex/auto-setup.md](codex/auto-setup.md) | AI에 붙여넣기 → 나머지 자동 세팅 |
+| [codex/setup-guide.md](codex/setup-guide.md) | 👉 **여기부터 시작** — VS Code 확장 설치 + ChatGPT 로그인 |
+| [codex/auto-setup.md](codex/auto-setup.md) | 설치 끝나면 AI 채팅창에 붙여넣기 → 나머지 자동 |
+
+## ~~Gemini CLI (Google)~~ — ⏸️ 임시 퇴출
+
+> ~~무료 AI 어시스턴트. Google 계정으로 바로 시작.~~
+>
+> **현재 Gemini는 응답 속도 이슈로 가이드에서 임시 제외 중입니다.**
+> Google이 성능 개선하면 다시 포함 예정. 그 전에는 **Codex (무료)** 를 추천.
+> ~~[gemini/setup-guide.md](gemini/setup-guide.md)~~ (파일은 보존, 권장하지 않음)
+
+---
+
+## 어떤 AI를 고를까? — 비교표
+
+| | **Claude Code** (유료 메인) | **Codex CLI** (무료 입문) | ~~Gemini CLI~~ |
+|---|---|---|---|
+| **가격** | 유료 ($5부터 API 종량제 / Pro $20/월) | **무료** (ChatGPT 계정, 체험 한시적) | ~~무료~~ |
+| **일일 한도** | 구독 플랜별 | ChatGPT 플랜별 | ~~1,000 요청~~ |
+| **속도** | ⚡ 빠름 | ⚡ 빠름 | ~~🐢 느림 (임시 제외 사유)~~ |
+| **Node.js** | 18+ | 22+ | ~~20+~~ |
+| **강점** | 깊은 분석, 긴 맥락, 플러그인 | GPT-5 기반 강력한 에이전트 | — |
+| **VS Code** | ✅ 확장 | ✅ 확장 | ~~✅~~ |
+| **Windows** | ✅ 네이티브 | ⚠️ WSL 권장 (CLI), 확장은 네이티브 | ~~✅~~ |
+| **글로벌 지침 파일** | `CLAUDE.md` | `AGENTS.md` | ~~`GEMINI.md`~~ |
+| **플러그인** | ✅ [sonmat](https://github.com/jun0-ds/sonmat) | ✅ [sonmat](https://github.com/jun0-ds/sonmat) | ~~✅~~ |
 
 ---
 
 ## 사용법
 
-1. 원하는 AI의 `setup-guide.md`를 열고 단계별로 따라하기
-2. AI가 동작하면 `auto-setup.md` 내용을 첫 대화에 붙여넣기
-3. AI가 질문하면 답하기 → 세팅 끝
+1. 위 **"당신은 누구인가요?"** 에서 경로 고르기
+2. 해당 AI의 `setup-guide.md` 를 열고 단계별로 따라하기
+3. AI가 동작하면 `auto-setup.md` 내용을 첫 대화에 붙여넣기
+4. AI가 질문하면 답하기 → 세팅 끝

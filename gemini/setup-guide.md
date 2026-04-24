@@ -1,5 +1,13 @@
 # Gemini CLI 세팅 가이드 (VS Code)
 
+> ⏸️ **현재 이 가이드는 임시 퇴출 상태입니다.**
+> Gemini의 응답 속도가 느려 메인 가이드에서 제외되었습니다. Google이 성능 개선하면 복귀 예정.
+> 그 전에는 [Codex (무료)](../codex/setup-guide.md) 또는 [Claude Code (유료)](../claude/setup-guide.md) 를 권장합니다.
+>
+> 아래 내용은 과거 가이드 보존용입니다. 최신 정보와 맞지 않을 수 있습니다.
+
+---
+
 > 무료로 AI 코딩 어시스턴트 쓰기. Google 계정만 있으면 됨.
 > 일일 1,000 요청 무료 (60 req/min)
 
